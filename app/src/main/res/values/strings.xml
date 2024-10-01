@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Recipe Finder</string>
+    <string-array name="Categories">
+        <item>None</item>
+        <item>Beef</item>
+        <item>Breakfast</item>
+        <item>Chicken</item>
+        <item>Desert</item>
+        <item>Vegan</item>
+    </string-array>
+</resources>
