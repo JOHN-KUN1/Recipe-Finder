@@ -17,4 +17,7 @@ interface RetrofitInterface {
     @GET("filter.php")
     suspend fun getMealsInCategory(@Query("c") category : String) : Response<CategoryMeals>
 
+    @GET("filter.php")
+    suspend fun getMealByMainIngredient(@Query("i") mainIngredient : String) : Response<CategoryMeals>
+
 }

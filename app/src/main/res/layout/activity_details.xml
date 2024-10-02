@@ -28,8 +28,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewDescription"
         android:layout_width="300dp"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
         android:visibility="invisible"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -41,6 +42,7 @@
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:backgroundTint="@color/white"
           android:elevation="10dp">
 
         <TextView
@@ -63,23 +65,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
             android:text="TextView"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewMealName" />
 
         <TextView
             android:id="@+id/textViewCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
             android:text="TextView"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewOrigin" />
       </androidx.constraintlayout.widget.ConstraintLayout>
@@ -106,6 +109,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="7dp"
+        android:backgroundTint="@color/white"
         android:visibility="invisible"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
@@ -115,7 +119,8 @@
 
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
-          android:layout_height="match_parent">
+          android:layout_height="match_parent"
+          android:backgroundTint="@color/white">
 
         <TextView
             android:id="@+id/textViewIngredient1"
@@ -125,7 +130,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -133,11 +138,11 @@
             android:id="@+id/textViewMeasurement1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient1"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -149,7 +154,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient1" />
 
@@ -157,11 +162,11 @@
             android:id="@+id/textViewMeasurement2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient2"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement1" />
 
@@ -173,7 +178,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient2" />
 
@@ -181,11 +186,11 @@
             android:id="@+id/textViewMeasurement3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient3"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement2" />
 
@@ -197,7 +202,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient3" />
 
@@ -205,11 +210,11 @@
             android:id="@+id/textViewMeasurement4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient4"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement3" />
 
@@ -221,7 +226,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient4" />
 
@@ -229,11 +234,11 @@
             android:id="@+id/textViewMeasurement5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient5"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement4" />
 
@@ -245,7 +250,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient5" />
 
@@ -253,11 +258,11 @@
             android:id="@+id/textViewMeasurement6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient6"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement5" />
 
@@ -269,7 +274,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient6" />
 
@@ -277,11 +282,11 @@
             android:id="@+id/textViewMeasurement7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient7"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement6" />
 
@@ -293,7 +298,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient7" />
 
@@ -301,11 +306,11 @@
             android:id="@+id/textViewMeasurement8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient8"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement7" />
 
@@ -317,7 +322,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient8" />
 
@@ -325,11 +330,11 @@
             android:id="@+id/textViewMeasurement9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient9"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement8" />
 
@@ -342,7 +347,7 @@
             android:layout_marginBottom="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient9" />
@@ -351,12 +356,12 @@
             android:id="@+id/textViewMeasurement10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="7dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textViewIngredient10"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement9" />
@@ -366,24 +371,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.413"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement1"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement11"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewMeasurement11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textIngredient11"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -391,24 +395,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement2"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement12"
             app:layout_constraintTop_toBottomOf="@+id/textIngredient11" />
 
         <TextView
             android:id="@+id/textViewMeasurement12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textIngredient12"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement11" />
 
         <TextView
@@ -416,24 +419,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement3"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement13"
             app:layout_constraintTop_toBottomOf="@+id/textIngredient12" />
 
         <TextView
             android:id="@+id/textViewMeasurement13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient13"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement12" />
 
         <TextView
@@ -441,24 +443,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement4"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement14"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient13" />
 
         <TextView
             android:id="@+id/textViewMeasurement14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient14"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement13" />
 
         <TextView
@@ -466,24 +467,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement5"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement15"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient14" />
 
         <TextView
             android:id="@+id/textViewMeasurement15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient15"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement14" />
 
         <TextView
@@ -491,24 +491,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement6"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement16"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient15" />
 
         <TextView
             android:id="@+id/textViewMeasurement16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient16"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement15" />
 
         <TextView
@@ -516,24 +515,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement7"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement17"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient16" />
 
         <TextView
             android:id="@+id/textViewMeasurement17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient17"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement16" />
 
         <TextView
@@ -541,24 +539,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement8"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement18"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient17" />
 
         <TextView
             android:id="@+id/textViewMeasurement18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient18"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement17" />
 
         <TextView
@@ -566,24 +563,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement9"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement19"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient18" />
 
         <TextView
             android:id="@+id/textViewMeasurement19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient19"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement18" />
 
         <TextView
@@ -591,24 +587,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.412"
-            app:layout_constraintStart_toEndOf="@+id/textViewMeasurement10"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMeasurement20"
             app:layout_constraintTop_toBottomOf="@+id/textViewIngredient19" />
 
         <TextView
             android:id="@+id/textViewMeasurement20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="7dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textViewIngredient20"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMeasurement19" />
 
 
@@ -637,6 +632,7 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="7dp"
+        android:backgroundTint="@color/white"
         android:visibility="invisible"
         app:cardCornerRadius="10dp"
         app:cardElevation="15dp"
@@ -646,7 +642,8 @@
 
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+          android:layout_height="wrap_content"
+          android:backgroundTint="@color/white">
 
         <TextView
             android:id="@+id/textViewInstructions"
@@ -658,7 +655,7 @@
             android:gravity="left"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.082"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.john.recipefinder.Model.CategoryMeals
 import com.john.recipefinder.databinding.ItemDesignBinding
@@ -19,16 +20,23 @@ class CategoryAdapter(val categoryMeals: CategoryMeals,val context : Context) : 
     }
 
     override fun getItemCount(): Int {
-        return categoryMeals.meals.size
+        try {
+            return categoryMeals.meals.size
+        } catch (e:NullPointerException) {
+            Toast.makeText(context.applicationContext,"Ingredient not Found",Toast.LENGTH_LONG).show()
+            return 0
+        }
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         holder.itemDesignBinding.categoryMealName.text = categoryMeals.meals[position].strMeal
         Picasso.get().load(categoryMeals.meals[position].strMealThumb.removeSurrounding("\"")).into(holder.itemDesignBinding.categoryMealImage)
 
         holder.itemDesignBinding.itemDesignLayout.setOnClickListener {
 
-            val mealId = categoryMeals.meals[position].idMeal.toString().removeSurrounding("\"")
+            val mealId = categoryMeals.meals[position].idMeal.removeSurrounding("\"")
             val intent = Intent(context,DetailsActivity::class.java)
             intent.putExtra("mealId",mealId)
             context.startActivity(intent)

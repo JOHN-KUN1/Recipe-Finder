@@ -58,26 +58,31 @@ class MainActivity : AppCompatActivity() {
                         val intent = Intent(this@MainActivity,CategoriesActivity::class.java)
                         intent.putExtra("category_name",selectedItem)
                         startActivity(intent)
+                        mainBinding.spinner.setSelection(0)
                     }
                     "Breakfast" ->{
                         val intent = Intent(this@MainActivity,CategoriesActivity::class.java)
                         intent.putExtra("category_name",selectedItem)
                         startActivity(intent)
+                        mainBinding.spinner.setSelection(0)
                     }
                     "Chicken" -> {
                         val intent = Intent(this@MainActivity,CategoriesActivity::class.java)
                         intent.putExtra("category_name",selectedItem)
                         startActivity(intent)
+                        mainBinding.spinner.setSelection(0)
                     }
-                    "Desert" -> {
+                    "Dessert" -> {
                         val intent = Intent(this@MainActivity,CategoriesActivity::class.java)
                         intent.putExtra("category_name",selectedItem)
                         startActivity(intent)
+                        mainBinding.spinner.setSelection(0)
                     }
                     "Vegan" -> {
                         val intent = Intent(this@MainActivity,CategoriesActivity::class.java)
                         intent.putExtra("category_name",selectedItem)
                         startActivity(intent)
+                        mainBinding.spinner.setSelection(0)
                     }
 
                 }
@@ -126,6 +131,19 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity,DetailsActivity::class.java)
             intent.putExtra("mealId",mealId)
             startActivity(intent)
+
+        }
+
+        mainBinding.inputBody.setStartIconOnClickListener {
+            val mainIngredient = mainBinding.SearchBar.text.toString()
+            if(mainIngredient.isNotEmpty()){
+                val intent = Intent(this@MainActivity,MainIngredientActivity::class.java)
+                intent.putExtra("main_ingredient",mainIngredient)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(applicationContext,"Field cannot be empty!!",Toast.LENGTH_LONG).show()
+            }
 
         }
 

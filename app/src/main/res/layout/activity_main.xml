@@ -40,15 +40,15 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:startIconDrawable="@drawable/search_icon"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/SearchBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/search_icon"
-            android:drawablePadding="20dp"
-            android:hint="Search for Food Recipe here"
+            android:paddingStart="48dp"
+            android:hint="Insert Your Main Ingredient Here..."
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
