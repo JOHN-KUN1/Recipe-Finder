@@ -1,12 +1,17 @@
 package com.john.recipefinder
 
 import android.graphics.DiscretePathEffect
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.john.recipefinder.RetrofitInstance.RetrofitInstance
@@ -21,7 +26,9 @@ import com.saksham.customloadingdialog.hideDialog
 class CategoriesActivity : AppCompatActivity() {
 
     lateinit var categoryBinding: ActivityCategoriesBinding
+    lateinit var connectivityViewModel: ConnectivityViewModel
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -43,22 +50,32 @@ class CategoriesActivity : AppCompatActivity() {
 
         categoryBinding.textViewSelectedCategory.text = mealCategory
         categoryBinding.recyclerView.layoutManager = LinearLayoutManager(this)
-        lifecycleScope.launch(Dispatchers.IO) {
 
-            val response = api.getMealsInCategory(mealCategory)
-            if (response.isSuccessful){
-                val categoryMeals = response.body()!!
+        //view model for internet connectivity
+        val connectivityViewModelFactory = ConnectivityViewModelFactory(this)
+        connectivityViewModel = ViewModelProvider(this,connectivityViewModelFactory).get(ConnectivityViewModel::class.java)
+        connectivityViewModel.isConnected.observe(this, Observer {
+            if (it){
+                lifecycleScope.launch(Dispatchers.IO) {
+                    val response = api.getMealsInCategory(mealCategory)
+                    if (response.isSuccessful){
+                        val categoryMeals = response.body()!!
 
-                withContext(Dispatchers.Main){
-                    val adapter = CategoryAdapter(categoryMeals,this@CategoriesActivity)
-                    categoryBinding.recyclerView.adapter = adapter
-                    hideDialog()
-                    categoryBinding.recyclerView.visibility = View.VISIBLE
+                        withContext(Dispatchers.Main){
+                            val adapter = CategoryAdapter(categoryMeals,this@CategoriesActivity)
+                            categoryBinding.recyclerView.adapter = adapter
+                            hideDialog()
+                            categoryBinding.recyclerView.visibility = View.VISIBLE
+                        }
+
+                    }
+
                 }
-
+            }else{
+                Toast.makeText(applicationContext,"Internet Access Required",Toast.LENGTH_LONG).show()
             }
+        })
 
-        }
 
     }
 }

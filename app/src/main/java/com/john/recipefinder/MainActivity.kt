@@ -1,6 +1,8 @@
 package com.john.recipefinder
 
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -15,7 +17,10 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.john.recipefinder.Model.Meal
 import com.john.recipefinder.RetrofitInstance.RetrofitInstance
 import com.john.recipefinder.RetrofitInterface.RetrofitInterface
 import com.john.recipefinder.databinding.ActivityMainBinding
@@ -25,11 +30,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var mainBinding : ActivityMainBinding
     lateinit var mealId : String
+    lateinit var connectivityViewModel: ConnectivityViewModel
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,32 +106,49 @@ class MainActivity : AppCompatActivity() {
         //creating the retrofit api interface
         val apiInterface = RetrofitInstance.getRetrofitInstance().create(RetrofitInterface::class.java)
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val response = apiInterface.getRandomMeal()
-            if (response.isSuccessful){
-                val meal = response.body()!!
+        // for checking internet connectivity
+        val connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
 
-                // to get id of meal
-                mealId = meal.meals[0].get("idMeal").toString().removeSurrounding("\"")
+        // view model factory for connectivity view model
+        val connectivityFactory = ConnectivityViewModelFactory(this)
 
-                val mealVideo = meal.meals[0].get("strYoutube").toString().removeSurrounding("\"")
-                val mealImage = meal.meals[0].get("strMealThumb").toString().removeSurrounding("\"")
-                val mealName = meal.meals[0].get("strMeal").toString().removeSurrounding("\"")
-                withContext(Dispatchers.Main){
-                    mainBinding.mealName.text = mealName
+        connectivityViewModel = ViewModelProvider(this,connectivityFactory).get(ConnectivityViewModel::class.java)
 
-                    //make youtube link of meal clickable
-                    mainBinding.youtubeLinkTextView.isClickable = true
-                    mainBinding.youtubeLinkTextView.movementMethod = LinkMovementMethod.getInstance()
-                    val youtubeLink = "<a href='$mealVideo'> $mealName </a>"
-                    mainBinding.youtubeLinkTextView.text = Html.fromHtml(youtubeLink, Html.FROM_HTML_MODE_COMPACT)
+        connectivityViewModel.isConnected.observe(this, Observer { it->
+            if(it){
+                lifecycleScope.launch(Dispatchers.IO) {
+                    val response = apiInterface.getRandomMeal()
+                    if (response.isSuccessful) {
+                        val meal = response.body()!!
 
-                    Picasso.get().load(mealImage).into(mainBinding.randomMealImage)
-                    hideDialog()
-                    mainBinding.randomMealContentLayout.visibility = View.VISIBLE
+                        // to get id of meal
+                        mealId = meal.meals[0].get("idMeal").toString().removeSurrounding("\"")
+
+                        val mealVideo = meal.meals[0].get("strYoutube").toString().removeSurrounding("\"")
+                        val mealImage = meal.meals[0].get("strMealThumb").toString().removeSurrounding("\"")
+                        val mealName = meal.meals[0].get("strMeal").toString().removeSurrounding("\"")
+                        withContext(Dispatchers.Main) {
+                            mainBinding.mealName.text = mealName
+
+                            //make youtube link of meal clickable
+                            mainBinding.youtubeLinkTextView.isClickable = true
+                            mainBinding.youtubeLinkTextView.movementMethod =
+                                LinkMovementMethod.getInstance()
+                            val youtubeLink = "<a href='$mealVideo'> $mealName </a>"
+                            mainBinding.youtubeLinkTextView.text =
+                                Html.fromHtml(youtubeLink, Html.FROM_HTML_MODE_COMPACT)
+
+                            Picasso.get().load(mealImage).into(mainBinding.randomMealImage)
+                            hideDialog()
+                            mainBinding.randomMealContentLayout.visibility = View.VISIBLE
+                        }
+                    }
                 }
+            }else{
+                Toast.makeText(applicationContext,"Internet needed",Toast.LENGTH_SHORT).show()
             }
-        }
+        })
+
 
         mainBinding.randomMealImage.setOnClickListener {
 
