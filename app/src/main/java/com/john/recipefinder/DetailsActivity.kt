@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.john.recipefinder.RetrofitInstance.RetrofitInstance
 import com.john.recipefinder.RetrofitInterface.RetrofitInterface
 import com.john.recipefinder.databinding.ActivityDetailsBinding
@@ -186,6 +187,7 @@ class DetailsActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,"Internet Access required",Toast.LENGTH_SHORT).show()
             }
         })
+
 
     }
 
